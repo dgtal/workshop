@@ -110,7 +110,7 @@ class CustomerCrudController extends CrudController
 
         // ------ CRUD BUTTONS
 
-        $this->crud->addButtonFromModelFunction('line', 'open', 'getOpenButton', 'beginning');
+        // $this->crud->addButtonFromModelFunction('line', 'open', 'getOpenButton', 'beginning');
 
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function

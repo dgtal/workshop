@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\AutodataCommand::class,
+        Commands\MercadoLibreCommand::class,
+        Commands\ScrapSegurosCommand::class,
     ];
 
     /**

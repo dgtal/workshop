@@ -32,10 +32,6 @@ class ModelCrudController extends CrudController
         // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
-        // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
-        // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         $this->crud->addField([
             'label' => 'Marca',
@@ -44,6 +40,15 @@ class ModelCrudController extends CrudController
             'entity' => 'make',
             'attribute' => 'name',
             'model' => "App\Models\Make",
+        ]);
+
+        $this->crud->addField([
+            'label' => 'Familia',
+            'type' => 'select2',
+            'name' => 'family_id',
+            'entity' => 'family',
+            'attribute' => 'name',
+            'model' => "App\Models\Family",
         ]);
 
         $this->crud->addField([
@@ -64,29 +69,47 @@ class ModelCrudController extends CrudController
         ]);
 
         $this->crud->addColumn([
+            'label' => 'Familia',
+            'type' => 'select',
+            'name' => 'family_id',
+            'entity' => 'family',
+            'attribute' => 'name',
+            'model' => "App\Models\Family",
+        ]);
+
+        $this->crud->addColumn([
             'label' => 'Modelo',
             'type' => 'text',
             'name' => 'name',
         ]);
 
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
-        // $this->crud->addColumns(); // add multiple columns, at the end of the stack
-        // $this->crud->removeColumn('column_name'); // remove a column from the stack
-        // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
-        // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
-        // $this->crud->setColumnsDetails(['column_1', 'column_2'], ['attribute' => 'value']);
+        // ------ CRUD FILTERS
+
+        $this->crud->addFilter([
+            'name' => 'make_id',
+            'type' => 'select2_ajax',
+            'label'=> 'Marca',
+            'placeholder' => 'Escribe una marca'
+        ],
+        url('admin/make/ajax-make-options'),
+        function($value) {
+            $this->crud->addClause('where', 'make_id', (int) $value);
+        });
+
+        $this->crud->addFilter([
+            'name' => 'family_id',
+            'type' => 'select2_ajax',
+            'label'=> 'Familia',
+            'placeholder' => 'Escribe una familia'
+        ],
+        url('admin/family/ajax-family-options'),
+        function($value) {
+            $this->crud->addClause('where', 'family_id', (int) $value);
+        });
 
         // ------ CRUD BUTTONS
-        // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
-        // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
-        // $this->crud->addButtonFromModelFunction($stack, $name, $model_function_name, $position); // add a button whose HTML is returned by a method in the CRUD model
-        // $this->crud->addButtonFromView($stack, $name, $view, $position); // add a button whose HTML is in a view placed at resources\views\vendor\backpack\crud\buttons
-        // $this->crud->removeButton($name);
-        // $this->crud->removeButtonFromStack($name, $stack);
 
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
-        // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
@@ -106,7 +129,7 @@ class ModelCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.

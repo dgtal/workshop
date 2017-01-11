@@ -14,8 +14,18 @@ class CreateModelsTable extends Migration
     {
         Schema::create('models', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);
+            $table->string('name', 100);
             $table->integer('make_id')->unsigned();
+
+			$table->foreign('make_id')
+				  ->references('id')->on('makes')
+				  ->onDelete('cascade');
+
+            $table->integer('family_id')->unsigned()->nullable();
+			$table->foreign('family_id')
+				  ->references('id')->on('families')
+				  ->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });

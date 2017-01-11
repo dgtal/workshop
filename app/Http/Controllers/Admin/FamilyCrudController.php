@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\TaskRequest as StoreRequest;
-use App\Http\Requests\TaskRequest as UpdateRequest;
+use App\Http\Requests\FamilyRequest as StoreRequest;
+use App\Http\Requests\FamilyRequest as UpdateRequest;
 
-class TaskCrudController extends CrudController
+class FamilyCrudController extends CrudController
 {
 
     public function setUp()
@@ -19,9 +19,9 @@ class TaskCrudController extends CrudController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-        $this->crud->setModel("App\Models\Task");
-        $this->crud->setRoute("admin/task");
-        $this->crud->setEntityNameStrings('tarea', 'tareas');
+        $this->crud->setModel("App\Models\Family");
+        $this->crud->setRoute("admin/family");
+        $this->crud->setEntityNameStrings('familia', 'familias');
 
         /*
 		|--------------------------------------------------------------------------
@@ -29,15 +29,40 @@ class TaskCrudController extends CrudController
 		|--------------------------------------------------------------------------
 		*/
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
-        // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
-        // $this->crud->removeFields($array_of_names, 'update/create/both');
+        $this->crud->addField([
+            'label' => 'Marca',
+            'type' => 'select2',
+            'name' => 'make_id',
+            'entity' => 'make',
+            'attribute' => 'name',
+            'model' => "App\Models\Make",
+        ]);
+
+        $this->crud->addField([
+            'name' => 'name',
+            'label' => 'Nombre',
+            'type' => 'text',
+        ]);
 
         // ------ CRUD COLUMNS
+        $this->crud->addColumn([
+            'label' => 'Marca',
+            'type' => 'select',
+            'name' => 'make_id',
+            'entity' => 'make',
+            'attribute' => 'name',
+            'model' => "App\Models\Make",
+        ]);
+
+        $this->crud->addColumn([
+            'label' => 'Familia',
+            'type' => 'text',
+            'name' => 'name',
+        ]);
+
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -75,7 +100,7 @@ class TaskCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
@@ -113,4 +138,10 @@ class TaskCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
 	}
+
+    public function selectOptions() {
+        $term = $this->request->input('term');
+        $options = \App\Models\Family::where('name', 'like', '%'.$term.'%')->get();
+        return $options->pluck('name', 'id');
+    }
 }

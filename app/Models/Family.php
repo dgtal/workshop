@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Backpack\CRUD\CrudTrait;
 
-class Task extends EloquentModel
+class Family extends EloquentModel
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Task extends EloquentModel
 	|--------------------------------------------------------------------------
 	*/
 
-    //protected $table = 'tasks';
+    //protected $table = 'families';
     //protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = ['name', 'make_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -29,11 +29,21 @@ class Task extends EloquentModel
 	|--------------------------------------------------------------------------
 	*/
 
+    public function __toString()
+    {
+        return (string) sprintf("%s", $this->name);
+    }
+
     /*
 	|--------------------------------------------------------------------------
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
+
+    public function make()
+    {
+        return $this->belongsTo('App\Models\Make');
+    }
 
     /*
 	|--------------------------------------------------------------------------

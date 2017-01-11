@@ -15,6 +15,10 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('vehicle_id')->unsigned();
+			$table->foreign('vehicle_id')
+				  ->references('id')->on('vehicles')
+				  ->onDelete('cascade');
+
             $table->integer('odometer')->nullable();
             $table->text('remarks')->nullable();
             $table->enum('status', ['Pendiente', 'Trabajando', 'Finalizada'])->default('Pendiente');

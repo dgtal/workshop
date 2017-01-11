@@ -75,7 +75,7 @@ class MakeCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
@@ -113,4 +113,10 @@ class MakeCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
 	}
+
+    public function selectOptions() {
+        $term = $this->request->input('term');
+        $options = \App\Models\Make::where('name', 'like', '%'.$term.'%')->get();
+        return $options->pluck('name', 'id');
+    }
 }

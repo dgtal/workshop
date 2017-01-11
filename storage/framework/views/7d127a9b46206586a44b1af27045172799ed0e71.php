@@ -21,6 +21,7 @@
           <!-- ================================================ -->
           <li><a href="<?php echo e(url(config('backpack.base.route_prefix', 'admin').'/dashboard')); ?>"><i class="fa fa-dashboard"></i> <span><?php echo e(trans('backpack::base.dashboard')); ?></span></a></li>
           <li><a href="<?php echo e(url('admin/make')); ?>"><i class="fa fa-tag"></i> <span>Marcas</span></a></li>
+          <li><a href="<?php echo e(url('admin/family')); ?>"><i class="fa fa-tag"></i> <span>Familias</span></a></li>
           <li><a href="<?php echo e(url('admin/model')); ?>"><i class="fa fa-tag"></i> <span>Modelos</span></a></li>
           <li><a href="<?php echo e(url('admin/customer')); ?>"><i class="fa fa-users"></i> <span>Clientes</span></a></li>
           <li><a href="<?php echo e(url('admin/vehicle')); ?>"><i class="fa fa-car"></i> <span>Vehículos</span></a></li>
