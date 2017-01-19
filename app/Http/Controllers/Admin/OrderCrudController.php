@@ -41,7 +41,7 @@ class OrderCrudController extends CrudController
             'attribute' => "fullname",
             'model' => "App\Models\Vehicle",
             'data_source' => url("admin/vehicle/ajax-vehicle-options"),
-            'placeholder' => "Buscar vehículo...",
+            'placeholder' => "Buscar vehículo por marca, matrícula o cliente...",
             'minimum_input_length' => 4,
             'value' => $this->request->input('vehicle_id'),
         ]);
