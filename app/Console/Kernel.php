@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\AutodataCommand::class,
         Commands\MercadoLibreCommand::class,
         Commands\ScrapSegurosCommand::class,
+        Commands\FixTntCommand::class,
     ];
 
     /**
