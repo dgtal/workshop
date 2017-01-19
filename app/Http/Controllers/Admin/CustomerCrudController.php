@@ -108,6 +108,8 @@ class CustomerCrudController extends CrudController
             'visible_key' => 'number'
         ]);
 
+        $this->crud->addButtonFromModelFunction('line', 'create_vehicle_button', 'getCreateVehicleButton', 'end');
+
         // ------ CRUD BUTTONS
 
         // $this->crud->addButtonFromModelFunction('line', 'open', 'getOpenButton', 'beginning');
@@ -179,8 +181,15 @@ class CustomerCrudController extends CrudController
         return $redirect_location;
 	}
 
-    // public function showDetailsRow($id)
-    // {
-        
-    // }
+    public function selectOptions($customer_id=null) {
+        $customer_id = (int) $customer_id;
+        $term = $this->request->input('q');
+
+        if ($customer_id > 0)
+            $options = \App\Models\Customer::where('id', $customer_id)->first();
+        else
+            $options = \App\Models\Customer::search($term)->take(10)->get();
+
+        return \Response::json($options);
+    }
 }

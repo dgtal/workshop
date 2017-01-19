@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Backpack\CRUD\CrudTrait;
+use Laravel\Scout\Searchable;
 
 class Customer extends EloquentModel
 {
     use CrudTrait;
+	use Searchable;
 
      /*
 	|--------------------------------------------------------------------------
@@ -24,6 +26,8 @@ class Customer extends EloquentModel
     // protected $dates = [];
 	protected $casts = ['phones' => 'array'];
 
+	protected $appends = array('fullname');
+
     /*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS
@@ -39,6 +43,25 @@ class Customer extends EloquentModel
     {
         return (string) sprintf("%s %s", $this->firstname, $this->lastname);
     }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+			'id'    => $this->id,
+			'name'  => $this->name(),
+			'email' => $this->email
+		];
+    }
+
+	public function getCreateVehicleButton()
+	{
+        return '<a href="' . url('/admin/vehicle/create?customer_id=' . $this->getKey()) . '" class="btn btn-xs btn-default"><i class="fa fa-car"></i> Añadir vehículo </a>';
+	}
 
     /*
 	|--------------------------------------------------------------------------
@@ -57,6 +80,16 @@ class Customer extends EloquentModel
 	| ACCESORS
 	|--------------------------------------------------------------------------
 	*/
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getFullnameAttribute()
+    {
+        return (string) sprintf("%s %s", $this->firstname, $this->lastname);
+    }
 
     /*
 	|--------------------------------------------------------------------------

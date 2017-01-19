@@ -1,0 +1,10 @@
+[
+{"model_id": "1000", "model_name": "CARAVAN 2.4 SE", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"},
+{"model_id": "1001", "model_name": "CARAVAN 3.3", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"},
+{"model_id": "115", "model_name": "NEON 1.8", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"},
+{"model_id": "113", "model_name": "NEON 2.0", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"},
+{"model_id": "118", "model_name": "STRATUS CONVERTIBLE", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"},
+{"model_id": "111", "model_name": "STRATUS LE", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"},
+{"model_id": "112", "model_name": "STRATUS LXI", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"},
+{"model_id": "108", "model_name": "VOYAGER", "make_name": "CHRYSLER", "make_id": "95", "year": "1998"}
+]

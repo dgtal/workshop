@@ -13,7 +13,6 @@ class MakeCrudController extends CrudController
 
     public function setUp()
     {
-
         /*
 		|--------------------------------------------------------------------------
 		| BASIC CRUD INFORMATION
@@ -44,7 +43,9 @@ class MakeCrudController extends CrudController
             'type' => 'text',
             'name' => 'name',
         ]);
-                
+
+        $this->crud->addButtonFromModelFunction('line', 'create_model_button', 'getCreateModelButton', 'end');
+     
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
@@ -116,7 +117,7 @@ class MakeCrudController extends CrudController
 
     public function selectOptions() {
         $term = $this->request->input('term');
-        $options = \App\Models\Make::where('name', 'like', '%'.$term.'%')->get();
+        $options = \App\Models\Make::where('name', 'like', '%'.$term.'%')->orderBy('name')->get();
         return $options->pluck('name', 'id');
     }
 }

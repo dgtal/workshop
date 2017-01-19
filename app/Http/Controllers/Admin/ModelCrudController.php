@@ -40,6 +40,7 @@ class ModelCrudController extends CrudController
             'entity' => 'make',
             'attribute' => 'name',
             'model' => "App\Models\Make",
+            'value' => $this->request->input('make_id'),
         ]);
 
         $this->crud->addField([
@@ -167,4 +168,17 @@ class ModelCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
 	}
+
+    public function selectOptions() {
+        $term = $this->request->input('q');
+
+        $options = \App\Models\Model::search($term)->take(10)->get();
+
+        // $options->each(function($item) {
+        //     echo $item->make->name . '<br>';
+        // });
+
+        // exit();
+        return \Response::json($options);
+    }
 }

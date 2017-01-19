@@ -32,29 +32,44 @@ class VehicleCrudController extends CrudController
         // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+        // $this->crud->addField([
+        //     'label' => 'Modelo',
+        //     'type' => 'select2',
+        //     'name' => 'model_id',
+        //     'entity' => 'model',
+        //     'attribute' => 'name',
+        //     'model' => "App\Models\Model",
+        // ]);
+
         $this->crud->addField([
-            'label' => 'Modelo',
-            'type' => 'select2',
+            'label' => "Cliente",
+            'type' => "select2_ajax",
+            'name' => 'customer_id',
+            'entity' => 'customer',
+            'attribute' => "fullname",
+            'model' => "App\Models\Customer",
+            'data_source' => url("admin/customer/ajax-customer-options"),
+            'placeholder' => "Cliente",
+            'minimum_input_length' => 4,
+            'value' => $this->request->input('customer_id'),
+        ]);
+
+        $this->crud->addField([
+            'label' => "Marca / Modelo",
+            'type' => "select2_ajax",
             'name' => 'model_id',
             'entity' => 'model',
-            'attribute' => 'name',
+            'attribute' => "fullname",
             'model' => "App\Models\Model",
+            'data_source' => url("admin/model/ajax-model-options"),
+            'placeholder' => "Modelo",
+            'minimum_input_length' => 4,
         ]);
 
         $this->crud->addField([
             'label' => 'Año',
             'type' => 'text',
             'name' => 'year',
-        ]);
-
-        $this->crud->addField([
-            'label' => 'Cliente',
-            'type' => 'select2',
-            'name' => 'customer_id',
-            'entity' => 'customer',
-            'attribute' => 'firstname',
-            'model' => "App\Models\Customer",
-            'value' => (int) $this->request->input('customer_id'),
         ]);
 
         $this->crud->addField([

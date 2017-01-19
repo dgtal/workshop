@@ -214,12 +214,16 @@ class ScrapSegurosCommand extends Command
 
         $page = $session->getPage();
         
-        $selectMarcas = $page->find('named', ['id_or_name', 'ctl00_ContentPlaceHolder1_DropDownMarcas']);
+        $selectMarcas = $page->find('named_exact', ['id_or_name', 'ctl00_ContentPlaceHolder1_DropDownMarcas']);
         $selectMarcas->selectOption(260);
 
-        $inputEventTargetValue = $page->find('named', ['id_or_name', '__EVENTTARGET'])->getValue();
+        $inputEventTargetValue = $page->find('named_exact', ['id_or_name', '__LASTFOCUS']);
 
-        dd($inputEventTargetValue);
+        if (null === $inputEventTargetValue) {
+            throw new \Exception('The element is not found');
+        }
+
+        dd($inputEventTargetValue->getValue());
         // $selectElement = $page->find('xpath', '//select[@id = "ctl00_ContentPlaceHolder1_DropDownMarcas"]');
         // $selectElement->selectOption(260);
 
