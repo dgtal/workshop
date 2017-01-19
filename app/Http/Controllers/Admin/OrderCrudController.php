@@ -34,18 +34,13 @@ class OrderCrudController extends CrudController
         // ------ CRUD FIELDS
 
         $this->crud->addField([
-            'label' => 'Estado',
-            'name' => 'status',
-            'type' => 'enum',
-        ]);
-
-        $this->crud->addField([
             'label' => 'Vehículo',
             'type' => 'select2',
             'name' => 'vehicle_id',
             'entity' => 'vehicle',
             'attribute' => 'name',
             'model' => "App\Models\Vehicle",
+            'value' => $this->request->input('vehicle_id'),
         ]);
 
         $this->crud->addField([
@@ -55,8 +50,14 @@ class OrderCrudController extends CrudController
         ]);
 
         $this->crud->addField([
+            'label' => 'Estado',
+            'name' => 'status',
+            'type' => 'enum',
+        ]);
+
+        $this->crud->addField([
             'name' => 'tasks',
-            'label' => 'Servicios',
+            'label' => 'Servicios a realizar',
             'type' => 'table',
             'entity_singular' => 'tarea',
             'columns' => [

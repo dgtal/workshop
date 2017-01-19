@@ -39,6 +39,11 @@ class Vehicle extends EloquentModel
         return (string) sprintf("%s, %s %s", $this->customer, $this->make->name, $this->model->name);
     }
 
+	public function getCreateOrderButton()
+	{
+        return '<a href="' . url('/admin/order/create?vehicle_id=' . $this->getKey()) . '" class="btn btn-xs btn-default"><i class="fa fa-car"></i> Crear orden</a>';
+	}
+
     /*
 	|--------------------------------------------------------------------------
 	| RELATIONS

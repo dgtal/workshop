@@ -111,6 +111,8 @@ class VehicleCrudController extends CrudController
             'model' => "App\Models\Model",
         ]);
 
+        $this->crud->addButtonFromModelFunction('line', 'create_order_button', 'getCreateOrderButton', 'end');
+
         // ------ CRUD BUTTONS
         // possible positions: 'beginning' and 'end'; defaults to 'beginning' for the 'line' stack, 'end' for the others;
         // $this->crud->addButton($stack, $name, $type, $content, $position); // add a button; possible types are: view, model_function
