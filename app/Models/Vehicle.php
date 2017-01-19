@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Backpack\CRUD\CrudTrait;
+use Laravel\Scout\Searchable;
 
 class Vehicle extends EloquentModel
 {
     use CrudTrait;
+	use Searchable;
 
      /*
 	|--------------------------------------------------------------------------
@@ -22,12 +24,29 @@ class Vehicle extends EloquentModel
     protected $fillable = ['customer_id', 'model_id', 'plate', 'vin', 'year'];
     // protected $hidden = [];
     // protected $dates = [];
+    protected $appends = ['fullname'];
 
     /*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS
 	|--------------------------------------------------------------------------
 	*/
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+			'id'    => $this->id,
+			'make'  => $this->make->name,
+			'model' => $this->model->name,
+            'plate' => $this->plate,
+            'owner' => $this->customer->fullname,
+		];
+    }
 
     public function __toString()
     {
@@ -77,6 +96,16 @@ class Vehicle extends EloquentModel
 	| ACCESORS
 	|--------------------------------------------------------------------------
 	*/
+
+    /**
+     * Get the model's full name.
+     *
+     * @return string
+     */
+    public function getFullnameAttribute()
+    {
+        return (string) sprintf("%s %s (%s)", $this->make->name, $this->model->name, $this->plate);
+    }
 
     /*
 	|--------------------------------------------------------------------------

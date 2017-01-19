@@ -31,7 +31,6 @@ class CarMakesModelsTableSeeder extends Seeder
     public function run()
     {
         DB::table('makes')->delete();
-        DB::table('families')->delete();
         DB::table('models')->delete();
 
         foreach ($this->car_makes as $car_make) {
@@ -59,7 +58,6 @@ class CarMakesModelsTableSeeder extends Seeder
                     DB::table('models')->insert([
                         // 'id'         => (int) $model['model_id'],
                         'make_id'    => (int) $model['make_id'],
-                        'family_id'  => null,
                         'name'       => (string) $model['model_name'],
                         'created_at' => Carbon::now(),
                     ]);

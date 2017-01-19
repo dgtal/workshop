@@ -34,12 +34,15 @@ class OrderCrudController extends CrudController
         // ------ CRUD FIELDS
 
         $this->crud->addField([
-            'label' => 'Vehículo',
-            'type' => 'select2',
+            'label' => "Vehículo",
+            'type' => "select2_ajax",
             'name' => 'vehicle_id',
-            'entity' => 'vehicle',
-            'attribute' => 'name',
+            'entity' => 'customer',
+            'attribute' => "fullname",
             'model' => "App\Models\Vehicle",
+            'data_source' => url("admin/vehicle/ajax-vehicle-options"),
+            'placeholder' => "Buscar vehículo...",
+            'minimum_input_length' => 4,
             'value' => $this->request->input('vehicle_id'),
         ]);
 
@@ -88,6 +91,7 @@ class OrderCrudController extends CrudController
             'type' => 'custom_select',
             'name' => 'vehicle_id',
             'entity' => 'vehicle',
+            'attribute' => 'fullname',
             'model' => "App\Models\Vehicle",
         ]);
 
@@ -101,6 +105,12 @@ class OrderCrudController extends CrudController
             'label' => 'Estado',
             'type' => 'text',
             'name' => 'status',
+        ]);
+
+        $this->crud->addColumn([
+            'label' => 'Creada',
+            'type' => 'date',
+            'name' => 'created_at',
         ]);
 
         $this->crud->addColumn([

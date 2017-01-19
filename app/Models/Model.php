@@ -21,7 +21,7 @@ class Model extends EloquentModel
     //protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['name', 'make_id', 'family_id'];
+    protected $fillable = ['name', 'make_id'];
 
     protected $appends = ['fullname'];
 
@@ -53,11 +53,6 @@ class Model extends EloquentModel
 	| RELATIONS
 	|--------------------------------------------------------------------------
 	*/
-
-    public function family()
-    {
-        return $this->belongsTo('App\Models\Family', 'family_id');
-    }
 
     public function make()
     {

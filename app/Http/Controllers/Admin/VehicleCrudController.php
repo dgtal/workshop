@@ -181,4 +181,16 @@ class VehicleCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
 	}
+
+    public function selectOptions($vehicle_id=null) {
+        $vehicle_id = (int) $vehicle_id;
+        $term = $this->request->input('q');
+
+        if ($vehicle_id > 0)
+            $options = \App\Models\Vehicle::where('id', $vehicle_id)->first();
+        else
+            $options = \App\Models\Vehicle::search($term)->take(10)->get();
+
+        return \Response::json($options);
+    }
 }

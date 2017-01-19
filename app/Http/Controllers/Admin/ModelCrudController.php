@@ -44,15 +44,6 @@ class ModelCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'label' => 'Familia',
-            'type' => 'select2',
-            'name' => 'family_id',
-            'entity' => 'family',
-            'attribute' => 'name',
-            'model' => "App\Models\Family",
-        ]);
-
-        $this->crud->addField([
             'name' => 'name',
             'label' => 'Nombre',
             'type' => 'text',
@@ -67,15 +58,6 @@ class ModelCrudController extends CrudController
             'entity' => 'make',
             'attribute' => 'name',
             'model' => "App\Models\Make",
-        ]);
-
-        $this->crud->addColumn([
-            'label' => 'Familia',
-            'type' => 'select',
-            'name' => 'family_id',
-            'entity' => 'family',
-            'attribute' => 'name',
-            'model' => "App\Models\Family",
         ]);
 
         $this->crud->addColumn([
@@ -97,16 +79,6 @@ class ModelCrudController extends CrudController
             $this->crud->addClause('where', 'make_id', (int) $value);
         });
 
-        $this->crud->addFilter([
-            'name' => 'family_id',
-            'type' => 'select2_ajax',
-            'label'=> 'Familia',
-            'placeholder' => 'Escribe una familia'
-        ],
-        url('admin/family/ajax-family-options'),
-        function($value) {
-            $this->crud->addClause('where', 'family_id', (int) $value);
-        });
 
         // ------ CRUD BUTTONS
 
@@ -174,11 +146,6 @@ class ModelCrudController extends CrudController
 
         $options = \App\Models\Model::search($term)->take(10)->get();
 
-        // $options->each(function($item) {
-        //     echo $item->make->name . '<br>';
-        // });
-
-        // exit();
         return \Response::json($options);
     }
 }
