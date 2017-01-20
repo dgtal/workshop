@@ -18,7 +18,7 @@ return [
         'company' => 'ProntoClima SRL',
         'address' => 'Dr Juan Campisteguy 1111',
         'city'    => 'Montevideo, Uruguay',
-        'phone'   => '222-222222',
+        'phone'   => '(598) 2-1232323',
         'email'   => 'prontoclima@gmail.com',
     ],
 

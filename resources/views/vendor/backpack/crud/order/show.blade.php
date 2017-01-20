@@ -49,8 +49,8 @@
             <strong>{{ config('backpack.base.project_data.company') }}</strong><br>
             {{ config('backpack.base.project_data.address') }}<br>
             {{ config('backpack.base.project_data.city') }}<br>
-            Teléfono: {{ config('backpack.base.project_data.phone') }}<br>
-            Email: {{ config('backpack.base.project_data.email') }}
+            {{ config('backpack.base.project_data.phone') }}<br>
+            {{ config('backpack.base.project_data.email') }}
           </address>
         </div>
         <!-- /.col -->
@@ -59,8 +59,10 @@
             <strong>{{ $entry->vehicle->customer->fullname }}</strong><br>
             {{ $entry->vehicle->fullname }}<br/>
             {!! $entry->vehicle->customer->address ? $entry->vehicle->customer->address . '<br/>' : '' !!}
-            {!! $entry->vehicle->customer->phone ? 'Teléfono: ' . $entry->vehicle->customer->phone . '<br/>' : '' !!}
-            {!! $entry->vehicle->customer->email ? 'Email: ' . $entry->vehicle->customer->email . '<br/>' : '' !!}
+            @if ($entry->vehicle->customer->phones)
+                {{ implode(', ', array_pluck($entry->vehicle->customer->phones, 'number')) }}<br/>
+            @endif
+            {!! $entry->vehicle->customer->email ? $entry->vehicle->customer->email . '<br/>' : '' !!}
           </address>
         </div>
         <!-- /.col -->
@@ -98,7 +100,7 @@
 
       <div class="row">
         <!-- accepted payments column -->
-        <div class="col-xs-6">
+        <div class="col-xs-12">
           @if ( $entry->remarks )
           <p class="lead">Notas</p>
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
