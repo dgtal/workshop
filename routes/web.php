@@ -33,4 +33,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     CRUD::resource('vehicle', 'Admin\VehicleCrudController');
 
     CRUD::resource('order', 'Admin\OrderCrudController');
+
+    CRUD::resource('user', 'Admin\UserCrudController');
 });

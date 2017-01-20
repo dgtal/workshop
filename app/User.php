@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Backpack\CRUD\CrudTrait;
 
 class User extends Authenticatable
 {
+    use CrudTrait;
     use Notifiable;
 
     /**
@@ -26,4 +28,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function setPasswordAttribute($pass) {
+        if ($pass) {
+            $this->attributes['password'] = \Hash::make($pass);
+        }
+    }
 }
