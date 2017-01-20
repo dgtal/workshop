@@ -14,19 +14,21 @@
 @endsection
 
 @section('content')
-	@if ($crud->hasAccess('list'))
-		<a href="{{ url($crud->route) }}" class="no-print">
-            <i class="fa fa-angle-double-left"></i> {{ trans('backpack::crud.back_to_all') }}
-            <span class="text-lowercase">{{ $crud->entity_name_plural }}</span>
-        </a> |
-
-		<a href="{{ url($crud->route) }}/{{ $entry->id }}/edit" class="no-print">
-            <i class="fa fa-edit"></i> {{ trans('backpack::crud.edit_the_new_item') }}
-            <span class="text-lowercase"> {{ $crud->entity_name }}</span>
-        </a>
-
-        <br><br>
-	@endif
+    <section class="content-header no-print">
+        <ul class="list-inline">
+            <li>
+                <a href="{{ url($crud->route) }}">
+                    <i class="fa fa-angle-double-left"></i> {{ trans('backpack::crud.back_to_all') }}
+                    <span class="text-lowercase">{{ $crud->entity_name_plural }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url($crud->route) }}/{{ $entry->id }}/edit">
+                    <i class="fa fa-edit"></i> {{ trans('backpack::crud.edit_the_new_item') }}
+                    <span class="text-lowercase"> {{ $crud->entity_name }}</span>
+                </a>
+            </li>
+    </section>
 
     <!-- Main content -->
     <section class="invoice">
