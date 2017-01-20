@@ -86,7 +86,7 @@
       </div>
       <!-- /.content-wrapper -->
 
-      <footer class="main-footer">
+      <footer class="main-footer no-print">
         @if (config('backpack.base.show_powered_by'))
             <div class="pull-right hidden-xs">
               {{ trans('backpack::base.powered_by') }} <a target="_blank" href="http://laravelbackpack.com">Laravel BackPack</a>

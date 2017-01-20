@@ -3,7 +3,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            {{ config('backpack.base.project_name') }}
+            {!! config('backpack.base.logo_lg') !!}
         </div>
         <!-- /.login-logo -->
         
@@ -30,9 +30,9 @@
 
 
                 <div class="row">
-                    <div class="col-xs-offset-8 col-xs-4">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-btn fa-envelope"></i> {{ trans('backpack::base.send_reset_link') }}
+                    <div class="col-xs-offset-7 col-xs-5">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">
+                            {{ trans('backpack::base.send_reset_link') }}
                         </button>
                     </div>
                     <!-- /.col -->

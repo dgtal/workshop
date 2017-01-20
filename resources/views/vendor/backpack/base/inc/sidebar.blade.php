@@ -1,6 +1,6 @@
 @if (Auth::check())
     <!-- Left side column. contains the sidebar -->
-    <aside class="main-sidebar">
+    <aside class="main-sidebar no-print">
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
         <!-- Sidebar user panel -->

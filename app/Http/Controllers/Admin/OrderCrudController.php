@@ -153,6 +153,10 @@ class OrderCrudController extends CrudController
             $this->crud->addClause('orWhere', 'status', 'Finalizada'); 
         });
 
+
+        // ------ CRUD ACCESS
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete', 'show']);
+
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
         // NOTE: you also need to do allow access to the right users: $this->crud->allowAccess('reorder');
@@ -209,4 +213,24 @@ class OrderCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
 	}
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $this->crud->hasAccessOrFail('show');
+
+        // get the info for that entry
+        $this->data['entry'] = $this->crud->getEntry($id);
+        $this->data['crud'] = $this->crud;
+        $this->data['title'] = trans('backpack::crud.preview').' '.$this->crud->entity_name;
+
+        // load the view from /resources/views/vendor/backpack/crud/ if it exists, otherwise load the one in the package
+        return view('crud::order.show', $this->data);
+    }
 }

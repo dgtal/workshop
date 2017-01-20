@@ -3,7 +3,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            {{ config('backpack.base.project_name') }}
+            {!! config('backpack.base.logo_lg') !!}
         </div>
         <!-- /.login-logo -->
         

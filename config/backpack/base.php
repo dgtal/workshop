@@ -14,8 +14,16 @@ return [
     // Project name. Shown in the breadcrumbs and a few other places.
     'project_name' => 'Prontoclima',
 
+    'project_data' => [
+        'company' => 'ProntoClima SRL',
+        'address' => 'Dr Juan Campisteguy 1111',
+        'city'    => 'Montevideo, Uruguay',
+        'phone'   => '222-222222',
+        'email'   => 'prontoclima@gmail.com',
+    ],
+
     // Menu logos
-    'logo_lg'   => '<b>Pronto</b>clima',
+    'logo_lg'   => '<i class="fa fa-snowflake-o"></i> <b>Pronto</b>clima',
     'logo_mini' => '<b>P</b>C',
 
     // Developer or company name. Shown in footer.
