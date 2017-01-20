@@ -97,9 +97,10 @@
       <div class="row">
         <!-- accepted payments column -->
         <div class="col-xs-6">
-          @if ( $entry->notes )
+          @if ( $entry->remarks )
+          <p class="lead">Notas</p>
           <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-            {{ $entry->notes }}
+            {!! nl2br(e($entry->remarks)) !!}
           </p>
           @endif
         </div>
