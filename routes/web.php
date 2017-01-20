@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function()
     Route::get('make/ajax-make-options', 'Admin\MakeCrudController@selectOptions');
     CRUD::resource('make', 'Admin\MakeCrudController');
 
-    Route::get('model/ajax-model-options', 'Admin\ModelCrudController@selectOptions');
+    Route::get('model/ajax-model-options/{model_id?}', 'Admin\ModelCrudController@selectOptions');
     CRUD::resource('model', 'Admin\ModelCrudController');
 
     Route::get('vehicle/ajax-vehicle-options/{vehicle_id?}', 'Admin\VehicleCrudController@selectOptions');

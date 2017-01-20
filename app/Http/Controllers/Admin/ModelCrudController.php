@@ -141,10 +141,14 @@ class ModelCrudController extends CrudController
         return $redirect_location;
 	}
 
-    public function selectOptions() {
+    public function selectOptions($model_id=null) {
+        $model_id = (int) $model_id;
         $term = $this->request->input('q');
 
-        $options = \App\Models\Model::search($term)->take(10)->get();
+        if ($model_id > 0)
+            $options = \App\Models\Model::where('id', $model_id)->first();
+        else
+            $options = \App\Models\Model::search($term)->take(10)->get();
 
         return \Response::json($options);
     }

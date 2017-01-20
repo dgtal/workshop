@@ -1,4 +1,4 @@
-@extends('backpack::layout')
+@extends('backpack::layout-simple')
 
 @section('content')
     <div class="row">

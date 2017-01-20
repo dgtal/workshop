@@ -5,8 +5,6 @@ use Backpack\Base\app\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    protected $data = []; // the information we send to the view
-
     /**
      * Create a new controller instance.
      */
@@ -22,8 +20,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $this->data['title'] = trans('backpack::base.dashboard'); // set the page title
+        $data = [];
+        // $this->data['stats']['customers'] = (new Customer)
 
-        return view('backpack::dashboard', $this->data);
+        return view('backpack::dashboard', $data);
     }
 }
