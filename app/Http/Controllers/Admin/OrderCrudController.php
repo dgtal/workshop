@@ -70,6 +70,17 @@ class OrderCrudController extends CrudController
         ]);
 
         $this->crud->addField([
+            'name' => 'autoparts',
+            'label' => 'Repuestos',
+            'type' => 'table',
+            'entity_singular' => 'repuesto',
+            'columns' => [
+                'name' => 'Detalle',
+            ],
+            'min' => 0
+        ]);
+
+        $this->crud->addField([
             'label' => 'Notas',
             'type' => 'textarea',
             'name' => 'remarks',

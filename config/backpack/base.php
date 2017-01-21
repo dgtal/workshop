@@ -16,10 +16,10 @@ return [
 
     'project_data' => [
         'company' => 'ProntoClima SRL',
-        'address' => 'Dr Juan Campisteguy 1111',
+        'address' => 'Aureliano Rodríguez Larreta 3040',
         'city'    => 'Montevideo, Uruguay',
-        'phone'   => '(598) 2-1232323',
-        'email'   => 'prontoclima@gmail.com',
+        'phone'   => '(598) 2-2041319',
+        'email'   => 'tallerprontoclima@gmail.com',
     ],
 
     // Menu logos

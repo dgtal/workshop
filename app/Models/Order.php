@@ -19,10 +19,10 @@ class Order extends EloquentModel
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['status', 'vehicle_id', 'remarks', 'odometer', 'tasks'];
+    protected $fillable = ['status', 'vehicle_id', 'remarks', 'odometer', 'tasks', 'autoparts'];
     // protected $hidden = [];
     // protected $dates = [];
-	protected $casts = ['tasks' => 'array'];
+	protected $casts = ['tasks' => 'array', 'autoparts' => 'array'];
 
     /*
 	|--------------------------------------------------------------------------

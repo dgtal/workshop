@@ -58,6 +58,7 @@
           <address>
             <strong>{{ $entry->vehicle->customer->fullname }}</strong><br>
             {{ $entry->vehicle->fullname }}<br/>
+            {{ number_format($entry->odometer) }} kilómetros<br/>
             {!! $entry->vehicle->customer->address ? $entry->vehicle->customer->address . '<br/>' : '' !!}
             @if ($entry->vehicle->customer->phones)
                 {{ implode(', ', array_pluck($entry->vehicle->customer->phones, 'number')) }}<br/>
@@ -74,13 +75,14 @@
       </div>
       <!-- /.row -->
 
+      @if ($entry->tasks)
       <!-- Table row -->
       <div class="row">
         <div class="col-xs-12 table-responsive">
           <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Servicio</th>
+                    <th>Servicios</th>
                     <!--<th>Subtotal</th>-->
                 </tr>
             </thead>
@@ -97,6 +99,31 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      @endif
+
+      @if ($entry->autoparts)
+      <!-- Table row -->
+      <div class="row">
+        <div class="col-xs-12 table-responsive">
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Repuestos</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($entry->autoparts as $autopart)
+                <tr>
+                    <td>{{ $autopart['name'] }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+          </table>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      @endif
 
       <div class="row">
         <!-- accepted payments column -->
