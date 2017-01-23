@@ -25,7 +25,9 @@ class VehicleRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'customer_id' => 'required|exists:customers,id',
+            'model_id' => 'required|exists:models,id',
+            'plate' => 'required|min:5|max:10'
         ];
     }
 
@@ -49,7 +51,13 @@ class VehicleRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function messages()
     {
         return [
-            //
+            'customer_id.required' => 'Seleccione el cliente',
+            'customer_id.exists' => 'La cliente seleccionado no existe',
+            'model_id.required' => 'Seleccione el modelo',
+            'model_id.exists' => 'El modelo seleccionado no existe',
+            'plate.required' => 'Ingrese la matrícula',
+            'plate.min' => 'El largo mínimo de la matrícula es de :min caracteres',
+            'plate.max' => 'El largo máximo de la matrícula es de :max caracteres',
         ];
     }
 }

@@ -25,7 +25,8 @@ class ModelRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'make_id' => 'required|exists:makes,id',
+            'name' => 'required|min:2|max:100'
         ];
     }
 
@@ -49,7 +50,11 @@ class ModelRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function messages()
     {
         return [
-            //
+            'make_id.required' => 'Seleccione la marca',
+            'make_id.exists' => 'La marca seleccionada no existe',
+            'name.required' => 'Ingrese el nombre',
+            'name.min' => 'El largo mínimo del nombre es de :min caracteres',
+            'name.max' => 'El largo máximo del nombre es de :max caracteres',
         ];
     }
 }

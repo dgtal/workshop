@@ -25,7 +25,8 @@ class OrderRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'vehicle_id' => 'required|exists:vehicles,id',
+            'odometer' => 'numeric',
         ];
     }
 
@@ -49,7 +50,9 @@ class OrderRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function messages()
     {
         return [
-            //
+            'vehicle_id.required' => 'Seleccione el vehículo',
+            'vehicle_id.exists' => 'El vehículo seleccionado no existe',
+            'odometer.numeric' => 'El kilometraje debe ser un valor numérico',
         ];
     }
 }

@@ -25,7 +25,7 @@ class MakeRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'required|min:2|max:100|unique:makes,name'
         ];
     }
 
@@ -49,7 +49,10 @@ class MakeRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function messages()
     {
         return [
-            //
+            'name.required' => 'Ingrese el nombre',
+            'name.min' => 'El largo mínimo del nombre es de :min caracteres',
+            'name.max' => 'El largo máximo del nombre es de :max caracteres',
+            'name.unique' => 'Ya existe una marca con ese nombre',
         ];
     }
 }
