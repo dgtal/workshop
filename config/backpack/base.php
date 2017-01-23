@@ -15,7 +15,7 @@ return [
     'project_name' => 'Prontoclima',
 
     'project_data' => [
-        'company' => 'ProntoClima SRL',
+        'company' => 'ProntoClima',
         'address' => 'Aureliano Rodríguez Larreta 3040',
         'city'    => 'Montevideo, Uruguay',
         'phone'   => '(598) 2-2041319',
