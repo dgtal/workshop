@@ -870,12 +870,3 @@ body[class^='skin-purple'] .pagination>.active>span:hover {
   .bg-none {
     background: none;
   }
-
-
-/* Elimina borde del sidebar en la impresión */
-@media print
-{
-  .skin-black-light .content-wrapper, .skin-black-light .main-footer {
-    border-left: none;
-  }
-}

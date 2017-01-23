@@ -30,6 +30,8 @@
     <!-- BackPack Base CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/backpack/backpack.base.css') }}">
 
+    <link rel="stylesheet" media="print" href="{{ asset('vendor/backpack/backpack.print.css') }}">
+
     @yield('after_styles')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -130,6 +132,13 @@
             $(this).parents('li').addClass('active');
           }
         });
+
+        $("a.print-button").on('click', function(){
+          var oldValue = $('div.content-wrapper').css('marginLeft');
+          $('div.content-wrapper').css('marginLeft','0');
+          window.print();
+          $('div.content-wrapper').css('marginLeft',oldValue);
+        })
     </script>
 
     @include('backpack::inc.alerts')
