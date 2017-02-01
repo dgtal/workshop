@@ -112,6 +112,10 @@
     <script src="{{ asset('vendor/adminlte') }}/plugins/fastclick/fastclick.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/dist/js/app.min.js"></script>
 
+    <!--<script src="{{ asset('vendor/adminlte') }}/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="{{ asset('vendor/adminlte') }}/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="{{ asset('vendor/adminlte') }}/plugins/input-mask/jquery.inputmask.extensions.js"></script>-->
+
     <!-- page script -->
     <script type="text/javascript">
         // To make Pace works on Ajax calls

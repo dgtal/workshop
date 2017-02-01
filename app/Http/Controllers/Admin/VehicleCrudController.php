@@ -51,7 +51,7 @@ class VehicleCrudController extends CrudController
             'data_source' => url("admin/customer/ajax-customer-options"),
             'placeholder' => "Cliente",
             'minimum_input_length' => 4,
-            'value' => $this->request->input('customer_id'),
+            'value' => is_numeric($this->request->input('customer_id')) ? $this->request->input('customer_id') : (is_numeric($this->request->old('customer_id')) ? $this->request->old('customer_id') : null),
         ]);
 
         $this->crud->addField([

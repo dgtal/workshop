@@ -27,6 +27,7 @@ class OrderRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
         return [
             'vehicle_id' => 'required|exists:vehicles,id',
             'odometer' => 'numeric',
+            'service_date' => 'required|date',
         ];
     }
 
@@ -53,6 +54,7 @@ class OrderRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
             'vehicle_id.required' => 'Seleccione el vehículo',
             'vehicle_id.exists' => 'El vehículo seleccionado no existe',
             'odometer.numeric' => 'El kilometraje debe ser un valor numérico',
+            'service_date.required' => 'Especifique la fecha del servicio',
         ];
     }
 }

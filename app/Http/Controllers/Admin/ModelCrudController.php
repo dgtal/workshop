@@ -40,7 +40,7 @@ class ModelCrudController extends CrudController
             'entity' => 'make',
             'attribute' => 'name',
             'model' => "App\Models\Make",
-            'value' => $this->request->input('make_id'),
+            'value' => is_numeric($this->request->input('make_id')) ? $this->request->input('make_id') : (is_numeric($this->request->old('make_id')) ? $this->request->old('make_id') : null),
         ]);
 
         $this->crud->addField([

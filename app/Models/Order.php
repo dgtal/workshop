@@ -19,16 +19,25 @@ class Order extends EloquentModel
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['status', 'vehicle_id', 'remarks', 'odometer', 'tasks', 'autoparts'];
+    protected $fillable = ['status', 'vehicle_id', 'remarks', 'odometer', 'tasks', 'autoparts', 'service_date'];
     // protected $hidden = [];
-    // protected $dates = [];
-	protected $casts = ['tasks' => 'array', 'autoparts' => 'array'];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+		'service_date',
+	];
+	protected $casts = ['tasks' => 'array', 'autoparts' => 'array', 'service_date' => 'date'];
 
     /*
 	|--------------------------------------------------------------------------
 	| FUNCTIONS
 	|--------------------------------------------------------------------------
 	*/
+    public function getFormattedOdomer()
+    {
+		return number_format($this->attributes['odometer']);
+    }
 
     /*
 	|--------------------------------------------------------------------------

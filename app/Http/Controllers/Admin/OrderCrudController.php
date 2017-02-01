@@ -32,7 +32,6 @@ class OrderCrudController extends CrudController
         // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
-
         $this->crud->addField([
             'label' => "Vehículo",
             'type' => "select2_ajax",
@@ -43,13 +42,26 @@ class OrderCrudController extends CrudController
             'data_source' => url("admin/vehicle/ajax-vehicle-options"),
             'placeholder' => "Buscar vehículo por marca, matrícula o cliente...",
             'minimum_input_length' => 4,
-            'value' => $this->request->input('vehicle_id'),
+            'value' => is_numeric($this->request->input('vehicle_id')) ? $this->request->input('vehicle_id') : (is_numeric($this->request->old('vehicle_id')) ? $this->request->old('vehicle_id') : null),
+        ]);
+
+        $this->crud->addField([
+            'label' => 'Fecha servicio',
+            'type' => 'date_picker',
+            'name' => 'service_date',
+            'date_picker_options' => [
+                'format' => 'mm-dd-yyyy',
+                'language' => 'es'
+            ],
         ]);
 
         $this->crud->addField([
             'label' => 'Kms',
             'type' => 'text',
             'name' => 'odometer',
+            // 'attributes' => [
+            //     'data-inputmask' => "'mask': ['mm-dd-yyyy']",
+            // ]
         ]);
 
         $this->crud->addField([
@@ -108,8 +120,8 @@ class OrderCrudController extends CrudController
 
         $this->crud->addColumn([
             'label' => 'Kms',
-            'type' => 'number',
-            'name' => 'odometer',
+            'type' => 'model_function',
+            'function_name' => 'getFormattedOdomer',
         ]);
 
         $this->crud->addColumn([
