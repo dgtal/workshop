@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Backpack\CRUD\CrudTrait;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Log;
 
 class Order extends EloquentModel
 {
@@ -40,7 +39,6 @@ class Order extends EloquentModel
 
 	public function getServiceDateDpAttribute()
 	{
-		Log::info(Carbon::createFromFormat('Y-m-d', $this->attributes['service_date'], config('app.timezone'))->toRfc1036String());
 		return Carbon::createFromFormat('Y-m-d', $this->attributes['service_date'], config('app.timezone'))->toDateTimeString();
 	}
 
