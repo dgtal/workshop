@@ -48,10 +48,11 @@ class OrderCrudController extends CrudController
         $this->crud->addField([
             'label' => 'Fecha servicio',
             'type' => 'date_picker',
-            'name' => 'service_date',
+            // 'field_unique_name' => 'service_date',
+            'name' => 'service_date_dp',
             'date_picker_options' => [
                 'format' => 'mm-dd-yyyy',
-                'language' => 'es'
+                'language' => 'es',
             ],
         ]);
 
@@ -134,6 +135,12 @@ class OrderCrudController extends CrudController
             'label' => 'Creada',
             'type' => 'date',
             'name' => 'created_at',
+        ]);
+
+        $this->crud->addColumn([
+            'label' => 'Realizada',
+            'type' => 'date',
+            'name' => 'service_date',
         ]);
 
         $this->crud->addColumn([

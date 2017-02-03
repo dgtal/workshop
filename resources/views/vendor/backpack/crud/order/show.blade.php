@@ -69,7 +69,7 @@
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
           <b>Orden ID:</b> {{ $entry->id }}<br>
-          <b>Fecha servicio:</b> {{ $entry->service_date->format('d/m/Y') }}<br>
+          <b>Fecha:</b> {{ $entry->service_date->format('d/m/Y') }}<br>
         </div>
         <!-- /.col -->
       </div>

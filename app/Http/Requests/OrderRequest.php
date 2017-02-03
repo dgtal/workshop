@@ -27,7 +27,7 @@ class OrderRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
         return [
             'vehicle_id' => 'required|exists:vehicles,id',
             'odometer' => 'numeric',
-            'service_date' => 'required|date',
+            'service_date_dp' => 'required|date',
         ];
     }
 
