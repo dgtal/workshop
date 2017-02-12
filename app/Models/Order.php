@@ -39,7 +39,7 @@ class Order extends EloquentModel
 
 	public function getServiceDateDpAttribute()
 	{
-		return Carbon::createFromFormat('Y-m-d', $this->attributes['service_date'], config('app.timezone'))->toDateTimeString();
+		return Carbon::createFromFormat('Y-m-d', $this->attributes['service_date'], config('app.timezone'))->toIso8601String();
 	}
 
 	public function setServiceDateDpAttribute($value) {

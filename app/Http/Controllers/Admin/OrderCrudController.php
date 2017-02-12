@@ -47,7 +47,7 @@ class OrderCrudController extends CrudController
 
         $this->crud->addField([
             'label' => 'Fecha servicio',
-            'type' => 'date_picker',
+            'type' => 'custom_date_picker',
             // 'field_unique_name' => 'service_date',
             'name' => 'service_date_dp',
             'date_picker_options' => [
