@@ -27,7 +27,8 @@ class VehicleRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
         return [
             'customer_id' => 'required|exists:customers,id',
             'model_id' => 'required|exists:models,id',
-            'plate' => 'required|min:5|max:10'
+            'plate' => 'required|min:5|max:10',
+            'vin' => 'max:20',
         ];
     }
 
@@ -58,6 +59,7 @@ class VehicleRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
             'plate.required' => 'Ingrese la matrícula',
             'plate.min' => 'El largo mínimo de la matrícula es de :min caracteres',
             'plate.max' => 'El largo máximo de la matrícula es de :max caracteres',
+            'vin.max' => 'El largo máximo del número de chasis es de :max caracteres',
         ];
     }
 }
