@@ -114,7 +114,7 @@
             <tbody>
                 @foreach ($entry->autoparts as $autopart)
                 <tr>
-                    <td>{{ $autopart['name'] }}</td>
+                    <td>{{ $autopart['name'] or '' }}</td>
                 </tr>
                 @endforeach
             </tbody>
