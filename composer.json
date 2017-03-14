@@ -7,8 +7,8 @@
     "require": {
         "php": ">=5.6.4",
         "algolia/algoliasearch-client-php": "^1.13",
-        "backpack/base": "^0.7.11",
-        "backpack/crud": "3.2.x-dev",
+        "backpack/base": "0.7.x",
+        "backpack/crud": "3.2.x",
         "backpack/langfilemanager": "^1.0",
         "behat/mink-goutte-driver": "^1.2",
         "fabpot/goutte": "^3.2",

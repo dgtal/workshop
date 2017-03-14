@@ -12,25 +12,25 @@ return [
     */
 
     // Project name. Shown in the breadcrumbs and a few other places.
-    'project_name' => 'Prontoclima',
+    'project_name' => env('WS_COMPANY'),
 
     'project_data' => [
-        'company' => 'ProntoClima',
-        'address' => 'Aureliano Rodríguez Larreta 3040',
-        'city'    => 'Montevideo, Uruguay',
-        'phone'   => '(598) 2-2041319',
-        'email'   => 'tallerprontoclima@gmail.com',
+        'company' => env('WS_COMPANY'),
+        'address' => env('WS_ADDRESS'),
+        'city'    => env('WS_CITY'),
+        'phone'   => env('WS_PHONE'),
+        'email'   => env('WS_EMAIL'),
     ],
 
     // Menu logos
-    'logo_lg'   => '<i class="fa fa-snowflake-o"></i> <b>Pronto</b>clima',
+    'logo_lg'   => env('WS_LOGO'),
     'logo_mini' => '<b>P</b>C',
 
     // Developer or company name. Shown in footer.
-    'developer_name' => 'Rodrigo',
+    'developer_name' => 'Developer',
 
     // Developer website. Link in footer.
-    'developer_link' => 'http://dgtal.info',
+    'developer_link' => '#',
 
     // Show powered by Laravel Backpack in the footer?
     'show_powered_by' => false,
